@@ -1,7 +1,7 @@
 == README
 
-A simpler scheduler API using Rails 4.
-Nothing fancy, should work with any Ruby version from the 1st Obama administration onward.
+A simple scheduler API using Rails 4.
+Nothing fancy, will probably work with any Ruby version from the 1st Obama administration onward.
 
 git clone repo
 bundle install
@@ -13,8 +13,10 @@ http://localhost:3000
 
 = Limitations
 
-1. The ticket type and asset kind are not dynamic, they are hardcoded in the model class. 
-2. There is no authorization or authentication - anyone can do anything with the API.
-3. There is no exception handling, users can request unavailable methods and things will just explode.  They can also post invalid input and get explosions.
-4. There is no exception tracking: got an error?  We won't know and won't care!
-5. Multiple duplicate and overlapping timeslots are all allowed.
+#. The ticket type and asset kind are not dynamic, they are hardcoded in the model class. 
+#. No way to specify different clients for now (though data model supports it).
+#. There is no authorization or authentication - anyone can do anything with the API.
+#. There is no exception handling, users can request unavailable methods and things will just explode.  They can also post invalid input and get explosions.
+#. There is no exception tracking: got an error?  We won't know and won't care!
+#. Multiple duplicate and overlapping timeslots are all allowed.
+#. Multiple duplicate boat names/capacities are allowed.

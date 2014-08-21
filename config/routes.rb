@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
 
   namespace :api do
+    
+    resource  :timeslot # both singular and plural routes will match
     resources :timeslots
+
+    resource :asset, :path=>:boat # to match the "boat" example, more general case would use assets and then pass in an asset_id   
+    resources :assets, :path=>:boats # ditto on both pluarl and singular
+
+    resource :assignment
+    resources :assignements
+
+    resource :booking
+    resources :bookings
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
