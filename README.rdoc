@@ -1,0 +1,10 @@
+== README
+
+A simpler scheduler API using Rails 4.
+Nothing fancy, should work with any Ruby version from the 1st Obama administration onward.
+
+git clone repo
+bundle install
+rails s
+
+http://localhost:3000
