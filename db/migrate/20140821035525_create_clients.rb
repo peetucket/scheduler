@@ -5,6 +5,6 @@ class CreateClients < ActiveRecord::Migration
       t.boolean :active, :null=>false, :default=>true
       t.timestamps
     end
-    Client.create(:name=>'Piranha View')
+    Client.create(:name=>Scheduler::Application.config.default_client_name)
   end
 end

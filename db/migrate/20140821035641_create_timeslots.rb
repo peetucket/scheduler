@@ -1,9 +1,7 @@
 class CreateTimeslots < ActiveRecord::Migration
   def change
     create_table :timeslots do |t|
-      t.string :name, :null=>false
-      t.date :date
-      t.time :start_time
+      t.datetime :start_time, :null=>false
       t.integer :duration, :null=>false, :default=>0
       t.timestamps
     end

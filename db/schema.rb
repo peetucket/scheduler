@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821040220) do
+ActiveRecord::Schema.define(version: 20140821172843) do
 
   create_table "assets", force: true do |t|
     t.string   "kind",                     null: false
@@ -21,9 +21,17 @@ ActiveRecord::Schema.define(version: 20140821040220) do
     t.datetime "updated_at"
   end
 
+  create_table "assignments", force: true do |t|
+    t.integer  "asset_id"
+    t.integer  "timeslot_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "bookings", force: true do |t|
     t.integer  "asset_id",    null: false
     t.integer  "timeslot_id", null: false
+    t.date     "date",        null: false
     t.integer  "tickets",     null: false
     t.string   "ticket_type", null: false
     t.text     "note"
@@ -39,14 +47,10 @@ ActiveRecord::Schema.define(version: 20140821040220) do
   end
 
   create_table "timeslots", force: true do |t|
-    t.string   "name",                   null: false
-    t.date     "date"
-    t.time     "start_time"
+    t.datetime "start_time",             null: false
     t.integer  "duration",   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "timeslots", ["name"], name: "index_timeslots_on_name"
 
 end

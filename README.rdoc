@@ -9,3 +9,12 @@ rake db:migrate
 rails s
 
 http://localhost:3000
+
+
+= Limitations
+
+1. The ticket type and asset kind are not dynamic, they are hardcoded in the model class. 
+2. There is no authorization or authentication - anyone can do anything with the API.
+3. There is no exception handling, users can request unavailable methods and things will just explode.  They can also post invalid input and get explosions.
+4. There is no exception tracking: got an error?  We won't know and won't care!
+5. Multiple duplicate and overlapping timeslots are all allowed.
