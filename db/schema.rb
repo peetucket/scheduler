@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20140821040220) do
 
   create_table "assets", force: true do |t|
-    t.integer  "kind_id",                  null: false
+    t.string   "kind",                     null: false
     t.integer  "client_id",                null: false
     t.integer  "availability", default: 0, null: false
     t.datetime "created_at"
@@ -38,14 +38,11 @@ ActiveRecord::Schema.define(version: 20140821040220) do
     t.datetime "updated_at"
   end
 
-  create_table "kinds", force: true do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "timeslots", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",                   null: false
+    t.date     "date"
+    t.time     "start_time"
+    t.integer  "duration",   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

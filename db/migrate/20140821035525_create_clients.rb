@@ -5,5 +5,6 @@ class CreateClients < ActiveRecord::Migration
       t.boolean :active, :null=>false, :default=>true
       t.timestamps
     end
+    Client.create(:name=>'Piranha View')
   end
 end

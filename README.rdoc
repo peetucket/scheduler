@@ -5,6 +5,7 @@ Nothing fancy, should work with any Ruby version from the 1st Obama administrati
 
 git clone repo
 bundle install
+rake db:migrate
 rails s
 
 http://localhost:3000
