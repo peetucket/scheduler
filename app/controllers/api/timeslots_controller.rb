@@ -22,7 +22,7 @@ class Api::TimeslotsController < ApplicationController
 	end
 
 	private
-	# since our output is not a straight model object, but includes some computed methods in the model, lets construct it
+	# since our output is not a straight model object, but includes some computed methods in the model, lets construct it (probably better if this method was in the model)
 	def timeslot_output(timeslot)
 	   {:id=>timeslot.id,:start_time=>timeslot.start_time,:duration=>timeslot.duration,:boats=>timeslot.assets.map{|asset| asset.id},:availability=>timeslot.availability,:customer_count=>timeslot.customer_count}
 	end

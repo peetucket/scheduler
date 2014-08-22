@@ -13,10 +13,12 @@ http://localhost:3000
 
 = Limitations
 
-#. The ticket type and asset kind are not dynamic, they are hardcoded in the model class. 
-#. No way to specify different clients for now (though data model supports it).
-#. There is no authorization or authentication - anyone can do anything with the API.
-#. There is no exception handling, users can request unavailable methods and things will just explode.  They can also post invalid input and get explosions.
-#. There is no exception tracking: got an error?  We won't know and won't care!
-#. Multiple duplicate and overlapping timeslots are all allowed.
-#. Multiple duplicate boat names/capacities are allowed.
+# The ticket type and asset kind are not dynamic, they are hardcoded in the model class. 
+# No way to specify different clients for now (though data model supports it).
+# There is no authorization or authentication - anyone can do anything with the API.
+# There is no exception handling, users can request unavailable methods and things will just explode.  They can also post invalid input and get explosions.
+# There is no exception tracking: got an error?  We won't know and won't care!
+# Multiple duplicate and overlapping timeslots are all allowed.
+# Multiple duplicate boat names/capacities are allowed.
+# Allocations of tickets to boats is potentially non-optimal.  It just finds the boat with the most capacity in any given timeslot and assigns new tickets to that boat.
+# There is no way to remove/cancel anything, and if you manually remove a booking, it won't free up the space in the assignments table.

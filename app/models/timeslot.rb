@@ -11,24 +11,24 @@ class Timeslot < ActiveRecord::Base
 
     # we may want to cache these computed values to make things quicker, and then just recompute for each new booking or assignment
 
-    # total availability across all assets at this timeslot
+    # total availability across all assets at this timeslot (not currently used in the api)
     def total_availability
     	total_capacity - customer_count
     end
 
     # largest available single block on any single asset at this timeslot
     def availability
-        assignments.maximum(:remaining) # sql computation
+        assignments.maximum(:remaining) || 0 # sql computation
     end
  
- 	# total capacity across all assets at this timeslot
+ 	# total capacity across all assets at this timeslot (not currently used in the api)
     def total_capacity
-    	assets.sum(:capacity) # sql computation
+    	assets.sum(:capacity) || 0# sql computation
     end
 
-    # total customer count across all assets at this timeslot
+    # total customer count across all assets at this timeslot 
     def customer_count
-    	bookings.sum(:tickets) # sql computation
+    	bookings.sum(:tickets) || 0# sql computation
     end
 
     private

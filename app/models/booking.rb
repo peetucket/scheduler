@@ -10,13 +10,18 @@ class Booking < ActiveRecord::Base
   	validate :confirm_availability
 
 	before_validation :set_default_ticket_type
-	before_save :update_timeslot_remaining_slots
+	before_save :update_timeslot_remaining_slots # before saving the bookings, fine capacity on an asset and update the slots left
 
 	private
 	def update_timeslot_remaining_slots
-		assignment=timeslot.assignments.where(['remaining >= ?',tickets]).order('remaining desc').limit(1).first # grab the largest possible slot, will explode if we don't have a valid existing timeslot
-		assignment.remaining -= tickets
-		assignment.save
+		# we should have spots remaining by the time we make it to this method, since we are validating availability before allowing the model to save
+
+		assignment=timeslot.assignments.where(['remaining = ?',tickets]).limit(1) # first try and find a slot with the exact number of left, a small optimization
+		if assignment.size == 0 # if we can find any with the exact number of tickets left, just go to the asset with the most spaces left
+			assignment=timeslot.assignments.where(['remaining >= ?',tickets]).order('remaining desc').limit(1) # grab the largest possible slot, will explode if we don't have a valid existing timeslot
+		end
+		assignment.first.remaining -= tickets
+		assignment.first.save
 	end
 
 	def set_default_ticket_type
