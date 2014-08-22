@@ -3,13 +3,28 @@
 A simple scheduler API using Rails 4.
 Nothing fancy, will probably work with any Ruby version from the 1st Obama administration onward.
 
-git clone repo
+= Getting going
+
+git clone <repo url>
+cd scheduler
 bundle install
+rake db:create:all
 rake db:migrate
+rake db:migrate RAILS_ENV=test
+
+= Start the server
+
 rails s
 
-http://localhost:3000
+Visit http://localhost:3000
 
+= API Spec
+
+See https://github.com/gadabout/passport
+
+= Running tests
+
+bundle exec rspec
 
 = Limitations
 
