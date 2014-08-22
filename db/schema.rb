@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20140821172843) do
   end
 
   create_table "assignments", force: true do |t|
-    t.integer  "asset_id"
-    t.integer  "timeslot_id"
+    t.integer  "asset_id",                null: false
+    t.integer  "timeslot_id",             null: false
+    t.integer  "remaining",   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,8 +47,9 @@ ActiveRecord::Schema.define(version: 20140821172843) do
   end
 
   create_table "timeslots", force: true do |t|
-    t.datetime "start_time",             null: false
-    t.integer  "duration",   default: 0, null: false
+    t.string   "start_time",                  null: false
+    t.datetime "start_timestamp",             null: false
+    t.integer  "duration",        default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

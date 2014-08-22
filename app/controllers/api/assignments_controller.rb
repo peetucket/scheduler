@@ -7,7 +7,7 @@ class Api::AssignmentsController < ApplicationController
 
 		assignment=Assignment.create(:timeslot_id=>timeslot_id,:asset_id=>asset_id)
 
-		render json: assignment, :except=>global_fields_to_exclude
+		render json: assignment, :except=>[:remaining]+global_fields_to_exclude
 
 	end
 

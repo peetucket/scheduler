@@ -7,17 +7,17 @@ class Asset < ActiveRecord::Base
 	KINDS=%w{boat kyak}  # could have a join table instead if these needed to be dynamic
 
 	validates :capacity, numericality: { only_integer: true, greater_than: 0 }
-	validates :client_id, numericality: { only_integer: true }
+	validates :client_id, numericality: { only_integer: true } # should validate if its a valid client_id too
   	validate :check_kinds
 
 	before_validation :set_default_kind, :set_default_client
 
 	def set_default_client
-		self.client_id=Client.default.id if self.client_id.blank?
+		self.client_id=Client.default.id if client_id.blank?
 	end
 
 	def set_default_kind
-		self.kind=Scheduler::Application.config.default_asset if self.kind.blank?
+		self.kind=Scheduler::Application.config.default_asset if kind.blank?
 	end
 
 	def check_kinds
