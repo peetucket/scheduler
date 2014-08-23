@@ -4,13 +4,25 @@ RSpec.describe Api::AssetsController do
 
  it "should create a new boat" do
 
-  	post :create, :capacity=>8, :name=>'Amazon Express'
+  	expect(Asset.count).to eq (0) #no assets in database yet
 
+  	name='Amazon Express' # values to test
+  	capacity=8
+
+  	post :create, :capacity=>capacity, :name=>name # post to the API
+
+  	# check response
 	expect(response).to be_success            
     json = JSON.parse(response.body)
-    expect(json["id"]).to eq(1) # we get the expected it back
-    expect(json["capacity"]).to eq(8)
-    expect(json["name"]).to eq('Amazon Express')
+    expect(json["id"].class).to eq(Fixnum)
+    expect(json["capacity"]).to eq(capacity)
+    expect(json["name"]).to eq(name)
+
+    # check database
+  	expect(Asset.count).to eq (1)
+    a=Asset.last
+    expect(a.name).to eq(name)
+    expect(a.capacity).to eq(capacity)
 
  end
 
