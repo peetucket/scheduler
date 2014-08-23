@@ -33,7 +33,7 @@ class Timeslot < ActiveRecord::Base
 
     private
     def set_start_timestamp
-      self.start_timestamp=Time.at(start_time).to_datetime # convert start time in Unix timestamp to a regular timestamp for storage in database for easier querying
+      self.start_timestamp=Time.at(start_time.to_i).to_datetime # convert start time in Unix timestamp to a regular timestamp for storage in database for easier querying
     end
 
 end

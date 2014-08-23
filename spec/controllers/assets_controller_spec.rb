@@ -26,4 +26,29 @@ RSpec.describe Api::AssetsController do
 
  end
 
+ it "should list boats" do
+
+  	name_1='Amazon Express' # values to test
+  	capacity_1=8
+  	name_2='Amazon Mini' 
+  	capacity_2=4
+
+  	post :create, :capacity=>capacity_1, :name=>name_1 # create some boats
+  	post :create, :capacity=>capacity_2, :name=>name_2 
+
+  	get :index
+
+  	# check response
+	expect(response).to be_success            
+    json = JSON.parse(response.body)
+	expect(json.class).to eq(Array) # could refactor this to be less verbose
+	expect(json.size).to eq(2) 
+	expect(json[0]['name']).to eq(name_1)
+	expect(json[0]['capacity']).to eq(capacity_1)
+	expect(json[1]['name']).to eq(name_2)
+	expect(json[1]['capacity']).to eq(capacity_2)
+
+ end
+
+
 end
