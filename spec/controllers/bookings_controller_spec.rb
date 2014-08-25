@@ -12,7 +12,7 @@ RSpec.describe Api::BookingsController do
 	 	boat=Asset.create(:capacity=>'8',:name=>'Pete\'s Rockin Boat')
 	 	assignment=Assignment.create(:timeslot_id=>timeslot.id,:asset_id=>boat.id)
 
-	 	post :create, :timeslot_id=>timeslot.id,:size=>num_tickets
+	 	post :create, :booking=>{:timeslot_id=>timeslot.id,:size=>num_tickets}
 
 	  	# check response
 		expect(response).to be_success            

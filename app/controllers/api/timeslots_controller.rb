@@ -12,8 +12,8 @@ class Api::TimeslotsController < ApplicationController
 
 	def create
 		
-		start_time=params[:start_time].to_i # we should do some error checking here to be sure they send in expected formats
-		duration=params[:duration]
+		start_time=params[:timeslot][:start_time].to_i # we should do some error checking here to be sure they send in expected formats
+		duration=params[:timeslot][:duration]
 
 		timeslot=Timeslot.create(:start_time=>start_time,:duration=>duration) 
 

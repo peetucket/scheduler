@@ -10,7 +10,7 @@ RSpec.describe Api::TimeslotsController do
 		duration='120'
 		start_timestamp=Time.at(start_time.to_i).to_datetime
 
-	  	post :create, :start_time=>start_time, :duration=>duration # post to the API
+	  	post :create, :timeslot=>{:start_time=>start_time, :duration=>duration} # post to the API
 
 	  	# check response
 		expect(response).to be_success            
@@ -38,8 +38,8 @@ RSpec.describe Api::TimeslotsController do
 		start_time_2="1406072000"
 		duration_2='60'
 
-	  	post :create, :start_time=>start_time_1, :duration=>duration_1 # create two timeslots
-	  	post :create, :start_time=>start_time_2, :duration=>duration_2 # create two timeslots
+	  	post :create, :timeslot=>{:start_time=>start_time_1, :duration=>duration_1} # create two timeslots
+	  	post :create, :timeslot=>{:start_time=>start_time_2, :duration=>duration_2} # create two timeslots
 
 	  	get :index, :date=>'2014-07-22'
 

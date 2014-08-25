@@ -14,8 +14,8 @@ class Api::AssetsController < ApplicationController
 
 	def create
 
-		name=params[:name]
-		capacity=params[:capacity]
+		name=params[:boat][:name]
+		capacity=params[:boat][:capacity]
 
 		asset=Asset.create(:name=>name,:capacity=>capacity,:client_id=>@client_id)
 

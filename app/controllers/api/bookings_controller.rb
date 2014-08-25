@@ -2,8 +2,8 @@ class Api::BookingsController < ApplicationController
 
 	def create
 		
-		timeslot_id=params[:timeslot_id]
-		tickets=params[:size]
+		timeslot_id=params[:booking][:timeslot_id]
+		tickets=params[:booking][:size]
 
 		booking=Booking.create(:timeslot_id=>timeslot_id,:tickets=>tickets)
 

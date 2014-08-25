@@ -9,7 +9,7 @@ RSpec.describe Api::AssetsController do
   	name='Amazon Express' # values to test
   	capacity=8
 
-  	post :create, :capacity=>capacity, :name=>name # post to the API
+  	post :create, :boat=>{:capacity=>capacity, :name=>name} # post to the API
 
   	# check response
 	expect(response).to be_success            
@@ -33,8 +33,8 @@ RSpec.describe Api::AssetsController do
   	name_2='Amazon Mini' 
   	capacity_2=4
 
-  	post :create, :capacity=>capacity_1, :name=>name_1 # create some boats
-  	post :create, :capacity=>capacity_2, :name=>name_2 
+  	post :create, :boat=>{:capacity=>capacity_1, :name=>name_1} # create some boats
+  	post :create, :boat=>{:capacity=>capacity_2, :name=>name_2} 
 
   	get :index
 
