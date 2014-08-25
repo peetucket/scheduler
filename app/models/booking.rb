@@ -10,7 +10,7 @@ class Booking < ActiveRecord::Base
   	validate :confirm_availability
 
 	before_validation :set_default_ticket_type
-	before_save :update_timeslot_remaining_slots # before saving the bookings, fine capacity on an asset and update the slots left
+	before_save :update_timeslot_remaining_slots # before saving the bookings, find capacity on an asset and update the slots left
 
 	private
 	def update_timeslot_remaining_slots

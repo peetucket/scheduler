@@ -7,8 +7,6 @@ class Api::BookingsController < ApplicationController
 
 		booking=Booking.create(:timeslot_id=>timeslot_id,:tickets=>tickets)
 
-		puts booking.errors.inspect
-
 		render json: booking_output(booking)
 
 	end
