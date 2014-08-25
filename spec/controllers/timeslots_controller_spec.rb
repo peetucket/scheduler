@@ -100,7 +100,7 @@ RSpec.describe Api::TimeslotsController do
 
 	it "should show correct number availabilty for one boat with overlapping timeslots after a booking (CASE2)" do
 
-		num_tickets=6
+		num_tickets=2
 		start_time_1="1406052000" # values to test
 		duration_1='120'
 		start_time_2="1406055600"
