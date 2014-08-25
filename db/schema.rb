@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140821172843) do
   create_table "timeslots", force: true do |t|
     t.string   "start_time",                  null: false
     t.datetime "start_timestamp",             null: false
+    t.datetime "end_timestamp",               null: false
     t.integer  "duration",        default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
